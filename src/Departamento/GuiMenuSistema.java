@@ -95,23 +95,66 @@ public class GuiMenuSistema extends JFrame {
                 repaint();     // Redesenha o JFrame inteiro
             }
         });
+
         miBiblioteca.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Abre Sistema de Biblioteca");
+                //Prepara o painel adicionar novos componentes
+                contentPane.removeAll();
+                //Cria nova instância de GuiMenuGraduação
+                // Passa o contentPane e o menu principal para trocar o menu;
+                GuiMenuBiblioteca guiMenuBiblioteca = new GuiMenuBiblioteca(contentPane, menuBarPrincipal);
+                contentPane.add(guiMenuBiblioteca);
+                //Atualiza a barra de menu
+                setJMenuBar(guiMenuBiblioteca.getMenuBar());
+
+                //Faz a revalidação e repaint da janela
+                contentPane.revalidate();
+                contentPane.repaint();
+                revalidate();  // Revalida o JFrame inteiro
+                repaint();     // Redesenha o JFrame inteiro
             }
+
         });
+
         miRestaurante.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Abre Sistema de Restaurante");
+                 //Prepara o painel adicionar novos componentes
+                 contentPane.removeAll();
+                 //Cria nova instância de GuiMenuGraduação
+                 // Passa o contentPane e o menu principal para trocar o menu;
+                 GuiMenuRestaurante guiMenuRestaurante = new GuiMenuRestaurante(contentPane, menuBarPrincipal);
+                 contentPane.add(guiMenuRestaurante);
+                 //Atualiza a barra de menu
+                 setJMenuBar(guiMenuRestaurante.getMenuBar());
+ 
+                 //Faz a revalidação e repaint da janela
+                 contentPane.revalidate();
+                 contentPane.repaint();
+                 revalidate();  // Revalida o JFrame inteiro
+                 repaint();     // Redesenha o JFrame inteiro
             }
         });
+        
         miFinancas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Abre Sistema de Finanças");
+                //Prepara o painel adicionar novos componentes
+                contentPane.removeAll();
+                //Cria nova instância de GuiMenuGraduação
+                // Passa o contentPane e o menu principal para trocar o menu;
+                GuiMenuTesouraria guiMenuTesouraria = new GuiMenuTesouraria(contentPane, menuBarPrincipal);
+                contentPane.add(guiMenuTesouraria);
+                //Atualiza a barra de menu
+                setJMenuBar(guiMenuTesouraria.getMenuBar());
+
+                //Faz a revalidação e repaint da janela
+                contentPane.revalidate();
+                contentPane.repaint();
+                revalidate();  // Revalida o JFrame inteiro
+                repaint();     // Redesenha o JFrame inteiro
             }
         });
-
-
-
     }
 }
