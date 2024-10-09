@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import javax.swing.*;
 
 import java.awt.*;
@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class GuiMenuGraduacao extends JPanel {
+public class GuiMenuTesouraria extends JPanel {
 
     private JMenuBar mnBarra;
     private JMenu mnArquivo, mnCadastros, mnConsultas;
-    private JMenuItem miSair, miMatricula,miCurso,miDepartamento,miMatriculados;
+    private JMenuItem miSair, miContasPagar, miContasReceber, miFluxoCaixa; 
     private Container parentContainer;
     private JMenuBar menuBarPrincipal; // Referência ao menu principal
 
-    public GuiMenuGraduacao(Container parent, JMenuBar menuPrincipal ) {
+    public GuiMenuTesouraria(Container parent, JMenuBar menuPrincipal ) {
         this.parentContainer = parent;
         this.menuBarPrincipal = menuPrincipal; // Guarda o menu principal
         inicializarComponentes();
@@ -38,24 +38,23 @@ public class GuiMenuGraduacao extends JPanel {
         miSair.setAccelerator (KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, ActionEvent.ALT_MASK));
         //Cadastros
-        miMatricula = new JMenuItem("Matrícula");
-        miMatricula.setMnemonic('M');
-        miCurso = new JMenuItem("Curso");
-        miDepartamento = new JMenuItem("Departamento");
+        miFluxoCaixa = new JMenuItem("Fluxo de Caixa");
+        miFluxoCaixa.setMnemonic('F');
         //Consultas
-        miMatriculados = new JMenuItem("Matriculados");
-        miMatriculados.setMnemonic('D');
+        miContasPagar = new JMenuItem("Contas a Pagar");
+        miContasPagar.setMnemonic('P');
+        miContasReceber = new JMenuItem("Contas a Receber");
+        miContasReceber.setMnemonic('R');
         //Adiciona componentes ao Frame
         //Vincula os menus aos itens de menu
         mnArquivo.add(miSair);
-        mnCadastros.add(miMatricula);
-        mnCadastros.add(miCurso);
-        mnCadastros.add(miDepartamento);
-        mnConsultas.add(miMatriculados);
+        mnCadastros.add(miFluxoCaixa);
+        mnConsultas.add(miContasPagar);
+        mnConsultas.add(miContasReceber);
         mnBarra.add (mnArquivo);
         mnBarra.add(mnCadastros);
         mnBarra.add(mnConsultas);
-        add(new JLabel("Sistema de Graduação", JLabel.CENTER), BorderLayout.CENTER);
+        add(new JLabel("Sistema da Tesouraria", JLabel.CENTER), BorderLayout.CENTER);
 
     }
     public JMenuBar getMenuBar() {
@@ -86,39 +85,22 @@ public class GuiMenuGraduacao extends JPanel {
 
             }
         });
-        miMatricula.addActionListener(new ActionListener() {
+
+        miFluxoCaixa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Matrícula");
-            }
-        });
-        miCurso.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Curso");
-            }
-        });
-        miDepartamento.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Departamento");
-                // Limpa o contentPane para remover os componentes existentes
-                parentContainer.removeAll();
-                // Adiciona o novo painel GuiCadastroDepartamentos
-                GuiCadastroDepartamentos guiCadastroDepartamentos = new GuiCadastroDepartamentos();
-                parentContainer.add(guiCadastroDepartamentos, BorderLayout.CENTER);
-                // Revalida e repinta o contentPane para garantir que o novo painel seja mostrado
-                parentContainer.revalidate();
-                parentContainer.repaint();
-
-
-
-
-
-
+                JOptionPane.showMessageDialog(null, "Abre Sistema de Fluxo de Caixa");
             }
         });
 
-        miMatriculados.addActionListener(new ActionListener() {
+        miContasPagar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Consulta de Matriculados");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Contas a Pagar");
+            }
+        });
+
+        miContasReceber.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Contas a Receber");
             }
         });
 

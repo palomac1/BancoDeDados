@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import java.sql.*;
 
 import Filme.BD;

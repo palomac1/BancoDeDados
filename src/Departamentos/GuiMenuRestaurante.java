@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import javax.swing.*;
 
 import java.awt.*;
@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class GuiMenuBiblioteca extends JPanel {
+public class GuiMenuRestaurante extends JPanel {
 
     private JMenuBar mnBarra;
     private JMenu mnArquivo, mnCadastros, mnConsultas;
-    private JMenuItem miSair, miLivros, miEmprestimoLivros;
+    private JMenuItem miSair, miCardapio, miPedidos, miReservas;
     private Container parentContainer;
     private JMenuBar menuBarPrincipal; // Referência ao menu principal
 
-    public GuiMenuBiblioteca(Container parent, JMenuBar menuPrincipal ) {
+    public GuiMenuRestaurante(Container parent, JMenuBar menuPrincipal ) {
         this.parentContainer = parent;
         this.menuBarPrincipal = menuPrincipal; // Guarda o menu principal
         inicializarComponentes();
@@ -38,21 +38,23 @@ public class GuiMenuBiblioteca extends JPanel {
         miSair.setAccelerator (KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, ActionEvent.ALT_MASK));
         //Cadastros
-        miLivros = new JMenuItem("Livros");
-        miLivros.setMnemonic('L');
-        miEmprestimoLivros = new JMenuItem("Empréstimo de Livros");
-        miEmprestimoLivros.setMnemonic('E');
+        miCardapio = new JMenuItem("Cardapio");
+        miCardapio.setMnemonic('C');
+        miPedidos = new JMenuItem("Pedidos");
+        miPedidos.setMnemonic('P');
         //Consultas
-        
+        miReservas = new JMenuItem("Reservas");
+        miReservas.setMnemonic('R');
         //Adiciona componentes ao Frame
         //Vincula os menus aos itens de menu
         mnArquivo.add(miSair);
-        mnCadastros.add(miLivros);
-        mnCadastros.add(miEmprestimoLivros);
+        mnCadastros.add(miCardapio);
+        mnCadastros.add(miPedidos);
+        mnConsultas.add(miReservas);
         mnBarra.add (mnArquivo);
         mnBarra.add(mnCadastros);
         mnBarra.add(mnConsultas);
-        add(new JLabel("Sistema da Biblioteca", JLabel.CENTER), BorderLayout.CENTER);
+        add(new JLabel("Sistema do Restaurante", JLabel.CENTER), BorderLayout.CENTER);
 
     }
     public JMenuBar getMenuBar() {
@@ -83,14 +85,22 @@ public class GuiMenuBiblioteca extends JPanel {
 
             }
         });
-        miLivros.addActionListener(new ActionListener() {
+
+        miCardapio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Livros");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Cardapio");
             }
         });
-        miEmprestimoLivros.addActionListener(new ActionListener() {
+
+        miPedidos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Empréstimo de Livros");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Pedidos");
+            }
+        });
+
+        miReservas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Abre Consulta de Reservas");
             }
         });
 

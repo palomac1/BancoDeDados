@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import javax.swing.*;
 
 import java.awt.*;
@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class GuiMenuRestaurante extends JPanel {
+public class GuiMenuGraduacao extends JPanel {
 
     private JMenuBar mnBarra;
     private JMenu mnArquivo, mnCadastros, mnConsultas;
-    private JMenuItem miSair, miCardapio, miPedidos, miReservas;
+    private JMenuItem miSair, miMatricula,miCurso,miDepartamento,miMatriculados, miDisciplina;
     private Container parentContainer;
     private JMenuBar menuBarPrincipal; // Referência ao menu principal
 
-    public GuiMenuRestaurante(Container parent, JMenuBar menuPrincipal ) {
+    public GuiMenuGraduacao(Container parent, JMenuBar menuPrincipal ) {
         this.parentContainer = parent;
         this.menuBarPrincipal = menuPrincipal; // Guarda o menu principal
         inicializarComponentes();
@@ -38,23 +38,27 @@ public class GuiMenuRestaurante extends JPanel {
         miSair.setAccelerator (KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, ActionEvent.ALT_MASK));
         //Cadastros
-        miCardapio = new JMenuItem("Cardapio");
-        miCardapio.setMnemonic('C');
-        miPedidos = new JMenuItem("Pedidos");
-        miPedidos.setMnemonic('P');
+        miMatricula = new JMenuItem("Matrícula");
+        miMatricula.setMnemonic('M');
+        miCurso = new JMenuItem("Curso");
+        miDepartamento = new JMenuItem("Departamento");
+        miDisciplina = new JMenuItem("Disciplina");
+
         //Consultas
-        miReservas = new JMenuItem("Reservas");
-        miReservas.setMnemonic('R');
+        miMatriculados = new JMenuItem("Matriculados");
+        miMatriculados.setMnemonic('D');
         //Adiciona componentes ao Frame
         //Vincula os menus aos itens de menu
         mnArquivo.add(miSair);
-        mnCadastros.add(miCardapio);
-        mnCadastros.add(miPedidos);
-        mnConsultas.add(miReservas);
+        mnCadastros.add(miMatricula);
+        mnCadastros.add(miCurso);
+        mnCadastros.add(miDisciplina);
+        mnCadastros.add(miDepartamento);
+        mnConsultas.add(miMatriculados);
         mnBarra.add (mnArquivo);
         mnBarra.add(mnCadastros);
         mnBarra.add(mnConsultas);
-        add(new JLabel("Sistema do Restaurante", JLabel.CENTER), BorderLayout.CENTER);
+        add(new JLabel("Sistema de Graduação", JLabel.CENTER), BorderLayout.CENTER);
 
     }
     public JMenuBar getMenuBar() {
@@ -85,22 +89,48 @@ public class GuiMenuRestaurante extends JPanel {
 
             }
         });
-
-        miCardapio.addActionListener(new ActionListener() {
+        miMatricula.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Cardapio");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Matrícula");
+            }
+        });
+        miCurso.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Curso");
+                // Limpa o contentPane para remover os componentes existentes
+                parentContainer.removeAll();
+                // Adiciona o novo painel GuiCadastroDepartamentos
+                GuiCadastroCursos guiCadastroCadastroCursos = new GuiCadastroCursos();
+                parentContainer.add(guiCadastroCadastroCursos, BorderLayout.CENTER);
+                // Revalida e repinta o contentPane para garantir que o novo painel seja mostrado
+                parentContainer.revalidate();
+                parentContainer.repaint();
+            }
+        });
+        miDisciplina.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Disciplina");
             }
         });
 
-        miPedidos.addActionListener(new ActionListener() {
+        miDepartamento.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Pedidos");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Departamento");
+                // Limpa o contentPane para remover os componentes existentes
+                parentContainer.removeAll();
+                // Adiciona o novo painel GuiCadastroDepartamentos
+                GuiCadastroDepartamentos guiCadastroDepartamentos = new GuiCadastroDepartamentos();
+                parentContainer.add(guiCadastroDepartamentos, BorderLayout.CENTER);
+                // Revalida e repinta o contentPane para garantir que o novo painel seja mostrado
+                parentContainer.revalidate();
+                parentContainer.repaint();
+
             }
         });
 
-        miReservas.addActionListener(new ActionListener() {
+        miMatriculados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Consulta de Reservas");
+                JOptionPane.showMessageDialog(null, "Abre Consulta de Matriculados");
             }
         });
 

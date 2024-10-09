@@ -151,6 +151,7 @@ public class GuiCadastroCursos extends JFrame {
                 limparCampos();
             }
         });
+        
         btExcluir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 cursos.curso.setCodigo(tfCodigo.getText());

@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import javax.swing.*;
 
 import java.awt.event.*;

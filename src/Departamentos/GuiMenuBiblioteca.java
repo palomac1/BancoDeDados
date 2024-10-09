@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 import javax.swing.*;
 
 import java.awt.*;
@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class GuiMenuTesouraria extends JPanel {
+public class GuiMenuBiblioteca extends JPanel {
 
     private JMenuBar mnBarra;
     private JMenu mnArquivo, mnCadastros, mnConsultas;
-    private JMenuItem miSair, miContasPagar, miContasReceber, miFluxoCaixa; 
+    private JMenuItem miSair, miLivros, miEmprestimoLivros;
     private Container parentContainer;
     private JMenuBar menuBarPrincipal; // Referência ao menu principal
 
-    public GuiMenuTesouraria(Container parent, JMenuBar menuPrincipal ) {
+    public GuiMenuBiblioteca(Container parent, JMenuBar menuPrincipal ) {
         this.parentContainer = parent;
         this.menuBarPrincipal = menuPrincipal; // Guarda o menu principal
         inicializarComponentes();
@@ -38,23 +38,21 @@ public class GuiMenuTesouraria extends JPanel {
         miSair.setAccelerator (KeyStroke.getKeyStroke(
                 KeyEvent.VK_S, ActionEvent.ALT_MASK));
         //Cadastros
-        miFluxoCaixa = new JMenuItem("Fluxo de Caixa");
-        miFluxoCaixa.setMnemonic('F');
+        miLivros = new JMenuItem("Livros");
+        miLivros.setMnemonic('L');
+        miEmprestimoLivros = new JMenuItem("Empréstimo de Livros");
+        miEmprestimoLivros.setMnemonic('E');
         //Consultas
-        miContasPagar = new JMenuItem("Contas a Pagar");
-        miContasPagar.setMnemonic('P');
-        miContasReceber = new JMenuItem("Contas a Receber");
-        miContasReceber.setMnemonic('R');
+        
         //Adiciona componentes ao Frame
         //Vincula os menus aos itens de menu
         mnArquivo.add(miSair);
-        mnCadastros.add(miFluxoCaixa);
-        mnConsultas.add(miContasPagar);
-        mnConsultas.add(miContasReceber);
+        mnCadastros.add(miLivros);
+        mnCadastros.add(miEmprestimoLivros);
         mnBarra.add (mnArquivo);
         mnBarra.add(mnCadastros);
         mnBarra.add(mnConsultas);
-        add(new JLabel("Sistema da Tesouraria", JLabel.CENTER), BorderLayout.CENTER);
+        add(new JLabel("Sistema da Biblioteca", JLabel.CENTER), BorderLayout.CENTER);
 
     }
     public JMenuBar getMenuBar() {
@@ -85,22 +83,14 @@ public class GuiMenuTesouraria extends JPanel {
 
             }
         });
-
-        miFluxoCaixa.addActionListener(new ActionListener() {
+        miLivros.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Sistema de Fluxo de Caixa");
+                JOptionPane.showMessageDialog(null, "Abre Cadastro de Livros");
             }
         });
-
-        miContasPagar.addActionListener(new ActionListener() {
+        miEmprestimoLivros.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Contas a Pagar");
-            }
-        });
-
-        miContasReceber.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Abre Cadastro de Contas a Receber");
+                JOptionPane.showMessageDialog(null, "Abre Empréstimo de Livros");
             }
         });
 

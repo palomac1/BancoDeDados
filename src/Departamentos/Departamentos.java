@@ -1,4 +1,4 @@
-package Departamento;
+package Departamentos;
 public class Departamentos {
     private int deptoCodigo;
     private String deptoSigla,deptoNome,deptoDiretor;
